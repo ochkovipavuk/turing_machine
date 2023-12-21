@@ -42,24 +42,25 @@ def checkAlf(c, alf):
     return (c == "_") or (c in alf)
 
 
-# program
-# start settings
-tape = readByChar(TAPE)
-alf = readByChar(ALF)
-com = [line.strip() for line in COMMANDS]
-q = 0
-cell_num = 0
-iter = 0
-flag = True
+if __name__ == "__main__":
+    # program
+    # start settings
+    tape = readByChar(TAPE)
+    alf = readByChar(ALF)
+    com = [line.strip() for line in COMMANDS]
+    q = 0
+    cell_num = 0
+    iter = 0
+    flag = True
 
-# start MT
-print("Start MT")
-while flag:
-    command = findCommand(q, tape[cell_num], com, alf)
-    back_tape = tape.copy()
-    back_cell_num = cell_num
-    checkError(command)
-    q, tape, cell_num, flag = executeCommand(command, q, tape, cell_num)
-    iter += 1
-    writeRes(RESULT, tape, cell_num, q, iter, command, back_tape, back_cell_num)
-print("Program end")
+    # start MT
+    print("Start MT")
+    while flag:
+        command = findCommand(q, tape[cell_num], com, alf)
+        back_tape = tape.copy()
+        back_cell_num = cell_num
+        checkError(command)
+        q, tape, cell_num, flag = executeCommand(command, q, tape, cell_num)
+        iter += 1
+        writeRes(RESULT, tape, cell_num, q, iter, command, back_tape, back_cell_num)
+    print("Program end")
